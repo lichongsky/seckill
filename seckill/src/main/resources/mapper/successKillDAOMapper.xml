@@ -1,0 +1,26 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lichong.dao.SuccesskilledDAO">
+    <insert id="insertSuccessKilled">
+        INSERT ignore into success_killed(successkilled_id,user_phone,state)
+        VALUES (#{secondKillId},#{userPhone},0)
+    </insert>
+
+    <select id="queryByIdWithSecondKillTO" resultType="SuccessKilledTO">
+        SELECT
+          sk.successkilled_id,
+          sk.user_phone,
+          sk.state,
+          sk.create_time,
+          s.secondkill_id as "secondKillTO.seckill_id",
+          s.name as "secondKillTO.name",
+          s.number as "secondKillTO.number",
+          s.start_time as "secondKillTO.start_time",
+          s.end_time as "secondKillTO.end_time",
+          s.create_time as "secondKillTO.create_time"
+        FROM success_killed sk
+        INNER JOIN second_kill s on s.secondkill_id = sk.successkilled_id
+        WHERE sk.successkilled_id = #{secondKillId} AND sk.user_phone=#{userPhone}
+    </select>
+</mapper>

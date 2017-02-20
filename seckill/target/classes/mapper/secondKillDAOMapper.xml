@@ -1,0 +1,36 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lichong.dao.SecondKillDAO">
+    <update id="reduceNum">
+        UPDATE second_kill
+        SET
+        NUMBER = NUMBER -1
+        WHERE
+        secondkill_id = #{secondKillId}
+        AND start_time <![CDATA[<=]]> end_time
+        AND NUMBER >0
+    </update>
+
+    <select id="findSecondKillById" resultType="SecondKillTO" parameterType="long">
+        SELECT
+          secondkill_id,
+          name,
+          number,
+          start_time,
+          end_time,
+          create_time
+          FROM second_kill
+          WHERE
+          secondkill_id = #{secondKillId}
+    </select>
+
+    <!--从第offset行记录到offset+limit行的记录-->
+    <select id="findSecondKill" resultType="SecondKillTO">
+        SELECT
+          secondkill_id,name,number,start_time,end_time,create_time
+          FROM second_kill
+          ORDER BY create_time DESC
+          limit #{offset},#{limit}
+    </select>
+</mapper>
