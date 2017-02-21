@@ -5,7 +5,7 @@ CREATE database seckill;
 use seckill;
 
 -- 秒杀商品库存表
-CREATE table secend_kill(
+CREATE table seckill(
   seckill_id bigint NOT NULL AUTO_INCREMENT COMMENT '商品库存id',
   name VARCHAR(120) NOT NULL COMMENT '商品名称',
   number int NOT NULL COMMENT '商品数量',
@@ -18,7 +18,7 @@ CREATE table secend_kill(
   KEY idx_creat_time(create_time)
 )engine = InnoDB AUTO_INCREMENT=1000 DEFAULT CHARSET = UTF8 COMMENT'商品库存表'
 
-INSERT INTO second_kill(name,number,start_time,end_time)
+INSERT INTO seckill(name,number,start_time,end_time)
 VALUES
   ('1000元秒杀iphone6',50,'2017-2-21 00:00:00','2017-2-21 00:10:00'),
   ('800元秒杀三星s6',50,'2017-2-21 00:10:00','2017-2-21 00:20:00'),

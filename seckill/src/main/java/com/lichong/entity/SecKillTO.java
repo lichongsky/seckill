@@ -5,9 +5,9 @@ import java.util.Date;
 /**
  * Created by lichong on 2017/2/20.
  */
-public class SecondKillTO {
+public class SecKillTO {
 
-    private long secondeKillId;
+    private long secKillId;
 
     private String name;
 
@@ -28,11 +28,11 @@ public class SecondKillTO {
     }
 
     public long getSecondeKillId() {
-        return secondeKillId;
+        return secKillId;
     }
 
     public void setSecondeKillId(long secondeKillId) {
-        this.secondeKillId = secondeKillId;
+        this.secKillId = secondeKillId;
     }
 
     public String getName() {
@@ -69,8 +69,8 @@ public class SecondKillTO {
 
     @Override
     public String toString() {
-        return "SecondKillTO{" +
-                "secondeKillId=" + secondeKillId +
+        return "SecKillTO{" +
+                "secondeKillId=" + secKillId +
                 ", name='" + name + '\'' +
                 ", number=" + number +
                 ", startTime=" + startTime +
