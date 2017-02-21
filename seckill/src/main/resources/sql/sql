@@ -30,8 +30,8 @@ CREATE TABLE `seckill` (
   `seckill_id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '商品库存id',
   `name` varchar(120) NOT NULL COMMENT '商品名称',
   `number` int(11) NOT NULL COMMENT '商品数量',
-  `start_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '开始时间',
-  `end_time` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00' COMMENT '结束时间',
+  `start_time` timestamp NOT NULL COMMENT '开始时间',
+  `end_time` timestamp NOT NULL COMMENT '结束时间',
   `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
   PRIMARY KEY (`seckill_id`),
   KEY `idx_start_time` (`start_time`),
@@ -43,11 +43,11 @@ CREATE TABLE `seckill` (
 -- Records of seckill
 -- ----------------------------
 INSERT INTO `seckill` (name,number,start_time,end_time) VALUES
-  ('1000元秒杀iphone6', '50', '2017-02-21 10:03:54', '2017-02-21 00:10:00', '2017-02-20 10:42:05'),
-  ('800元秒杀三星s6', '50', '2017-02-20 16:51:39', '2017-02-21 00:20:00', '2017-02-20 10:42:05'),
-  ('500元秒杀红米note2', '50', '2017-02-20 16:51:44', '2017-02-21 00:30:00', '2017-02-20 10:42:05'),
-  ('1000元秒杀小米电视2', '10', '2017-02-20 16:51:48', '2017-02-21 00:40:00', '2017-02-20 10:42:05'),
-  ('1000元秒杀小米电视2', '10', '2017-02-20 16:51:54', '2017-02-21 00:40:00', '2017-02-20 10:42:05');
+  ('1000元秒杀iphone6', '50', '2017-02-21 10:03:54', '2017-02-21 00:10:00'),
+  ('800元秒杀三星s6', '50', '2017-02-20 16:51:39', '2017-02-21 00:20:00'),
+  ('500元秒杀红米note2', '50', '2017-02-20 16:51:44', '2017-02-21 00:30:00'),
+  ('1000元秒杀小米电视2', '10', '2017-02-20 16:51:48', '2017-02-21 00:40:00');
+
 
 
 
