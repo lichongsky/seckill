@@ -8,8 +8,8 @@
         NUMBER = NUMBER -1
         WHERE
         seckill_id = #{secKillId}
-        AND start_time <![CDATA[<=]]> {#nowTime}
-        AND end_time >= {#nowTime}
+        AND start_time <![CDATA[<=]]> #{nowTime}
+        AND end_time >= #{nowTime}
         AND NUMBER >0
     </update>
 

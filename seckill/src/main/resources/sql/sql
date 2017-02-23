@@ -41,6 +41,7 @@ CREATE TABLE `seckill` (
 
 -- ----------------------------
 -- Records of seckill
+-- 在插入这些数据的时候需要注意当前时间是否合适，比如end_time的设置
 -- ----------------------------
 INSERT INTO `seckill` (name,number,start_time,end_time) VALUES
   ('1000元秒杀iphone6', '50', '2017-02-21 10:03:54', '2017-02-21 00:10:00'),
@@ -52,6 +53,7 @@ INSERT INTO `seckill` (name,number,start_time,end_time) VALUES
 
 
 -- 秒杀成功明细表
+
 
 SET FOREIGN_KEY_CHECKS=0;
 

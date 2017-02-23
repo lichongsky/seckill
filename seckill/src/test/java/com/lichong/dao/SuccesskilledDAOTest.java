@@ -26,7 +26,7 @@ public class SuccesskilledDAOTest {
 
     @Test
     public void insertSuccessKilled() throws Exception {
-        long secondKillId = 1004l;
+        long secondKillId = 1005l;
         long userPhone = 18349388888l;
         int a = successkilledDAO.insertSuccessKilled(secondKillId, userPhone);
         System.out.println("a=" + a);
@@ -34,7 +34,7 @@ public class SuccesskilledDAOTest {
 
     @Test
     public void queryByIdWithSecondKillTO() throws Exception {
-        long secondKillId = 1002l;
+        long secondKillId = 1005l;
         long userPhone = 18349388888l;
         SuccessKilledTO successKilledTO = successkilledDAO.queryByIdWithSecondKillTO(secondKillId, userPhone);
         System.out.println(successKilledTO);

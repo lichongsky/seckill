@@ -6,12 +6,15 @@ import com.lichong.dto.ExposeSeckill;
 import com.lichong.dto.SecKillExcution;
 import com.lichong.entity.SecKillTO;
 import com.lichong.entity.SuccessKilledTO;
+import com.lichong.enums.SeckillstateEnum;
 import com.lichong.exception.RepeatSecKillExcption;
 import com.lichong.exception.SecKillCloseExcption;
 import com.lichong.exception.SecKillException;
 import com.lichong.service.SeckillService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.DigestUtils;
 
 import java.util.Date;
@@ -20,6 +23,7 @@ import java.util.List;
 /**
  * Created by lichongsky on 2017/2/21.
  */
+@Service
 public class SecKillServiceImpl implements SeckillService {
     private Logger logger = LoggerFactory.getLogger(this.getClass());
 
@@ -30,17 +34,14 @@ public class SecKillServiceImpl implements SeckillService {
     // 随机盐值
     private static final String salt = "fdew32;pojr32;,lsmc?V?:>}{|+_{!~@$@8fmnjupafdsa";
 
-    @Override
     public List<SecKillTO> getAllSecKill() {
         return secKillDAO.findSecondKill(0, 5);
     }
 
-    @Override
     public SecKillTO getSeckillById(long secKillId) {
         return secKillDAO.findSecondKillById(secKillId);
     }
 
-    @Override
     public ExposeSeckill exposeSeckill(long secKillId) {
         SecKillTO secKillTO = secKillDAO.findSecondKillById(secKillId);
         if (secKillTO == null) {
@@ -66,7 +67,7 @@ public class SecKillServiceImpl implements SeckillService {
         return md5;
     }
 
-    @Override
+    @Transactional
     public SecKillExcution excuteSecKill(long secKillId, long userPhone, String md5) throws RepeatSecKillExcption, SecKillCloseExcption, SecKillException {
         if (!md5.equals(getMD5(secKillId)) || md5 == null) {
             throw new RepeatSecKillExcption("seckill data rewright");
@@ -84,7 +85,7 @@ public class SecKillServiceImpl implements SeckillService {
                 } else {
                     // 秒杀成功
                     SuccessKilledTO successKilledTO = successkilledDAO.queryByIdWithSecondKillTO(secKillId, userPhone);
-                    return new SecKillExcution(secKillId, 1, "秒杀成功", successKilledTO);
+                    return new SecKillExcution(secKillId, SeckillstateEnum.SUCCESS, successKilledTO);
                 }
             }
         } catch (RepeatSecKillExcption e1) {

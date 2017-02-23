@@ -1,6 +1,7 @@
 package com.lichong.dto;
 
 import com.lichong.entity.SuccessKilledTO;
+import com.lichong.enums.SeckillstateEnum;
 
 /**
  * Created by lichongsky on 2017/2/21.
@@ -12,20 +13,22 @@ public class SecKillExcution {
 
     private int state;
 
+    private SeckillstateEnum seckillstateEnum;
+
     private String stateInfo;
 
     private SuccessKilledTO successKilledTO;
 
-    public SecKillExcution(long secKillId, String stateInfo, int state) {
+    public SecKillExcution(long secKillId, SeckillstateEnum seckillstateEnum) {
         this.secKillId = secKillId;
-        this.stateInfo = stateInfo;
-        this.state = state;
+        this.stateInfo = seckillstateEnum.getStateInfo();
+        this.state = seckillstateEnum.getState();
     }
 
-    public SecKillExcution(long secKillId, int state, String stateInfo, SuccessKilledTO successKilledTO) {
+    public SecKillExcution(long secKillId, SeckillstateEnum seckillstateEnum, SuccessKilledTO successKilledTO) {
         this.secKillId = secKillId;
-        this.state = state;
-        this.stateInfo = stateInfo;
+        this.state = seckillstateEnum.getState();
+        this.stateInfo = seckillstateEnum.getStateInfo();
         this.successKilledTO = successKilledTO;
     }
 

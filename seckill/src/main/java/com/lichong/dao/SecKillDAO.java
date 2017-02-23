@@ -17,7 +17,7 @@ public interface SecKillDAO {
      * @param secKillId
      * @return
      */
-    int reduceNum(long secKillId, Date nowTime);
+    int reduceNum(@Param("secKillId") long secKillId, @Param("nowTime") Date nowTime);
 
     /**
      * 根据秒杀商品id获取商品信息

@@ -23,14 +23,15 @@ public class SecKillDAOTest {
 
     @Test
     public void reduceNum() throws Exception {
-        Date nowTime = new Date();
-        int num = secKillDAO.reduceNum(1000l,nowTime);
+        Date now = new Date();
+        long nowTime = now.getTime();
+        int num = secKillDAO.reduceNum(1006l,now);
         System.out.println("num=" + num);
     }
 
     @Test
     public void findSecondKillById() throws Exception {
-        long id = 1000l;
+        long id = 1005l;
         SecKillTO secKillTO = secKillDAO.findSecondKillById(id);
         System.out.println(secKillTO.toString());
     }
